@@ -173,6 +173,63 @@
    
   </div>
 </div>
-  </div>
+
+
+  <!-- Промокод бөлімі -->
+<div class="promo-section">
+  <h3>🎁 Промокод енгізіңіз:</h3>
+  <input type="text" id="promoCode" placeholder="мысалы: sensulu10">
+  <button onclick="applyPromoCode()">Қолдану</button>
+  <p id="discountAmount"></p>
+</div>
+
+<!-- Жоғары көтерілу батырмасы -->
+<button id="scrollToTop" style="display:none; position:fixed; bottom:20px; right:20px; padding:10px 15px; background-color:#ff9dbb; border:none; border-radius:50%; font-size:18px; cursor:pointer;">
+  ⬆
+</button>
+
+  <script>
+  let cartCount = 0;
+  const cartCounter = document.getElementById('cartCount');
+
+  document.querySelectorAll('.product-card button').forEach(button => {
+    button.addEventListener('click', () => {
+      cartCount++;
+      cartCounter.textContent = cartCount;
+    });
+  });
+
+  // Промокод тексеру
+  function applyPromoCode() {
+    const promoInput = document.getElementById('promoCode');
+    const discountOutput = document.getElementById('discountAmount');
+    const promo = promoInput.value.trim().toLowerCase();
+    let discount = 0;
+
+    if (promo === 'sensulu10') {
+      discount = 10;
+    } else if (promo === 'love20') {
+      discount = 20;
+    }
+
+    if (discount > 0) {
+      discountOutput.textContent = `Жеңілдік: ${discount}%`;
+    } else {
+      discountOutput.textContent = `Жарамсыз промокод`;
+    }
+  }
+
+  // Жоғары көтерілу
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  window.addEventListener('scroll', () => {
+    scrollToTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+
+  scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  </script>
+  
+
 </body>
 </html>
