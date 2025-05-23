@@ -1,0 +1,299 @@
+<<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SenSulu - Косметика және парфюмерия</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.jpg" type="image/jpg"/>
+</head>
+<body>
+  <header>
+    <div class="main-header">
+      <div class="logo">SenSulu</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">🏠Басты бет</a></li>
+          <li><a href="catalog.html">💄Каталог</a></li>
+          <li><a href="blog.html">📝Блог</a></li>
+          <li><a href="cart.html">🛒Себет</a></li>
+          <li><a href="baylanis.html">📞Байланыс</a></li>
+        </ul>
+      </nav>
+      <div class="icons">
+        <a href="#"><img src="поиск.jpg" alt="Іздеу"></a>
+        <a href="#"><img src="5.jpg" alt="Профиль"></a>
+        <a href="#"><img src="6.jpg" alt="Себет"></a>
+      </div>
+    </div>
+  </header>
+
+<header>
+  <h1>Сіздің себетіңіз – SenSulu</h1>
+</header>
+
+<div class="cart-container" id="cart">
+  <!-- Өнімдер -->
+  <div class="cart-item">
+    <img src="1.jpg" alt="Ерін далабы">
+    <h3>Қызғылт ерін далабы</h3>
+    <span class="price" data-price="4500">₸4,500</span>
+    <button class="remove">❌</button>
+  </div>
+  <div class="cart-item">
+    <img src="4.jpg" alt="Sen Aura парфюм">
+    <h3>Sen Aura – хош иіс</h3>
+    <span class="price" data-price="15000">₸15,000</span>
+    <button class="remove">❌</button>
+  </div>
+
+  <!-- Промокод және есеп -->
+  <div class="summary">
+    <label for="promo">🎁 Промокод енгізіңіз:</label>
+    <input type="text" id="promo" placeholder="Мысалы: SULU10">
+    <div class="line">
+      <span>Жеңілдік:</span>
+      <span id="discount">₸0</span>
+    </div>
+    
+ 
+<button id="openModalBtn">🛍️ Тапсырыс беру</button>
+
+<!-- Модаль терезе -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModalBtn">&times;</span>
+    <h3>📋 Тапсырыс мәліметтері</h3>
+    <form id="orderForm">
+      <label for="fullname">Аты-жөні:</label>
+      <input type="text" id="fullname" name="fullname" required />
+
+      <label for="address">Мекенжайы:</label>
+      <input type="text" id="address" name="address" required />
+
+      <label for="phone">Телефон нөмірі:</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label>Жеткізу түрі:</label>
+      <select id="deliveryMethod" name="deliveryMethod" required>
+        <option value="Курьер (₸1000)">Курьер (₸1000)</option>
+        <option value="Пошта (₸500)">Пошта (₸500)</option>
+      </select>
+
+      <label>Төлем әдісі:</label>
+      <select id="paymentMethod" name="paymentMethod" required>
+        <option value="Kaspi">Kaspi</option>
+        <option value="Halyk">Halyk Bank</option>
+      </select>
+
+      <button type="submit" class="submit-btn">Тапсырыс беру</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const openModalBtn = document.getElementById('openModalBtn');
+  const orderModal = document.getElementById('orderModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const orderForm = document.getElementById('orderForm');
+
+  // Модальді ашу
+  openModalBtn.addEventListener('click', () => {
+    orderModal.style.display = 'block';
+  });
+
+  // Модальді жабу крестикпен
+  closeModalBtn.addEventListener('click', () => {
+    orderModal.style.display = 'none';
+  });
+
+  // Модальді жабу сыртқа басқанда
+  window.addEventListener('click', (e) => {
+    if(e.target === orderModal) {
+      orderModal.style.display = 'none';
+    }
+  });
+
+  // Форманы жіберу
+  orderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = orderForm.fullname.value.trim();
+    const address = orderForm.address.value.trim();
+    const phone = orderForm.phone.value.trim();
+    const delivery = orderForm.deliveryMethod.value;
+    const payment = orderForm.paymentMethod.value;
+
+    alert(`✅ Рақмет, ${name}!\n\n📦 Жеткізу: ${delivery}\n💳 Төлем: ${payment}\n📍 Мекенжай: ${address}\n📞 Телефон: ${phone}\n\nТапсырысыңыз қабылданды!`);
+
+    orderModal.style.display = 'none';
+    orderForm.reset();
+  });
+</script>
+  </div>
+</div>
+</form>
+
+<button id="scrollToTopBtn">↑</button>
+
+
+<script>
+   
+  function loadCartItems() {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const container = document.getElementById('cart-items');
+    container.innerHTML = '';
+
+    let total = 0;
+    cartItems.forEach((item, index) => {
+      total += item.price;
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <span class="price" data-price="${item.price}">₸${item.price}</span>
+        <button onclick="removeItem(${index})">❌</button>
+      `;
+      container.appendChild(div);
+    });
+
+    updateTotal();
+  }
+
+  function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCartItems();
+  }
+function updateTotal() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let sum = cart.reduce((total, item) => total + item.price, 0);
+
+  const delivery = parseInt(document.getElementById('deliveryMethod')?.value || 1000);
+  let discount = 0;
+  const promo = document.getElementById('promo').value.trim();
+
+  if (promo === 'SULU10') {
+    discount = sum * 0.1;
+  }
+
+  document.getElementById('discount').textContent = `₸${discount.toFixed(0)}`;
+  document.getElementById('delivery').textContent = `₸${delivery}`;
+  document.getElementById('total').textContent = `₸${(sum + delivery - discount).toFixed(0)}`;
+}
+
+  function updateTotal() {
+    const prices = document.querySelectorAll('.cart-item .price');
+    let sum = 0;
+    prices.forEach(p => {
+      sum += parseInt(p.dataset.price);
+    });
+
+    const delivery = 1000;
+    let discount = 0;
+    const promo = document.getElementById('promo').value.trim();
+
+    if (promo === 'SULU10') {
+      discount = sum * 0.1;
+    }
+
+    document.getElementById('discount').textContent = `₸${discount.toFixed(0)}`;
+    document.getElementById('total').textContent = `₸${(sum + delivery - discount).toFixed(0)}`;
+  }
+
+  document.getElementById('promo').addEventListener('input', updateTotal);
+  document.querySelectorAll('.remove').forEach(btn => {
+    btn.addEventListener('click', function () {
+      this.closest('.cart-item').remove();
+      updateTotal();
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded', updateTotal);
+
+  const scrollBtn = document.getElementById("scrollToTopBtn");
+  window.onscroll = function () {
+    scrollBtn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
+  };
+  scrollBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  function updateTotal() {
+    const prices = document.querySelectorAll('.cart-item .price');
+    let sum = 0;
+    prices.forEach(p => {
+      sum += parseInt(p.dataset.price);
+    });
+
+    const delivery = parseInt(document.getElementById('deliveryMethod')?.value || 1000);
+    let discount = 0;
+    const promo = document.getElementById('promo').value.trim();
+
+    if (promo === 'SULU10') {
+      discount = sum * 0.1;
+    }
+
+    document.getElementById('discount').textContent = `₸${discount.toFixed(0)}`;
+    document.getElementById('delivery').textContent = `₸${delivery}`;
+    document.getElementById('total').textContent = `₸${(sum + delivery - discount).toFixed(0)}`;
+  }
+
+  document.getElementById('promo').addEventListener('input', updateTotal);
+  document.getElementById('deliveryMethod').addEventListener('change', updateTotal);
+
+  document.querySelectorAll('.remove').forEach(btn => {
+    btn.addEventListener('click', function () {
+      this.closest('.cart-item').remove();
+      updateTotal();
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded', updateTotal);
+
+  // 📝 Форманы өңдеу
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('fullname').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const delivery = document.getElementById('deliveryMethod').options[document.getElementById('deliveryMethod').selectedIndex].text;
+    const payment = document.getElementById('paymentMethod').value;
+    const total = document.getElementById('total').textContent;
+
+    alert(`✅ Рақмет, ${name}!\n📦 Жеткізу: ${delivery}\n💳 Төлем: ${payment}\n📍 Мекенжай: ${address}\n📞 Телефон: ${phone}\n\nЖалпы төлем: ${total}`);
+    
+    // Кейін серверге жіберуге дайын болу үшін объект ретінде сақтауға болады
+  });
+  
+</script>
+<footer>
+    <div class="footer-container">
+      <div class="footer-logo">SenSulu</div>
+      <div class="footer-links">
+        <a href="index.html">🏠Басты бет</a>
+        <a href="catalog.html">💄Каталог</a>
+        <a href="blog.html">📝Блог</a>
+        <a href="cart.html">🛒Себет</a>
+        <a href="baylanis.html">📞Байланыс</a>
+      </div>
+      <div class="footer-contact">
+        <p>Байланыс: +7 777 123 4567</p>
+        <p>Email: sensulu@example.com</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/"><img src="7.jpg" alt="Instagram"></a>
+          <a href="https://www.whatsapp.com/"><img src="8.jpg" alt="WhatsApp"></a>
+        </div>
+      </div>
+    </div>
+</footer>
+<footer>
+    <p>&copy; 2025 SenSulu косметика дүкені. Барлық құқықтар қорғалған.</p>
+  </footer>
+
+</body>
+</html>

@@ -820,3 +820,206 @@ footer {
   font-size: 24px;
   cursor: pointer;
 }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #fff5f7;
+    }
+    header, footer {
+      background: #ffdce0;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .cart-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-right: 15px;
+    }
+    .cart-item h3 {
+      flex: 1;
+      font-size: 18px;
+      color: #333;
+    }
+    .cart-item .price {
+      font-weight: bold;
+      color: #e91e63;
+      margin-right: 10px;
+    }
+    .cart-item .remove {
+      background: #ffb6c1;
+      border: none;
+      border-radius: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+    .summary {
+      margin-top: 30px;
+      background: #ffe3e6;
+      padding: 20px;
+      border-radius: 15px;
+    }
+    .summary label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .summary input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    .summary .line {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+    .summary .total {
+      font-size: 20px;
+      font-weight: bold;
+      color: #e91e63;
+    }
+    .order-btn {
+      background: #e91e63;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #scrollToTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 10px 15px;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+    }
+    body { font-family: Arial, sans-serif; padding: 20px; }
+  .order-form-container {
+    display: none; /* Бастапқыда жасырылған */
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid #e91e63;
+    border-radius: 8px;
+    background-color: #ffe6f0;
+    max-width: 400px;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  input, select {
+    width: 100%;
+    padding: 7px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  button:hover {
+    background-color: #c2185b;
+  }
+   body { font-family: Arial, sans-serif; }
+  
+  /* Модальдің фоны */
+  .modal {
+    display: none; /* Бастапқыда жасырылған */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  /* Модальдің контенті (терезесі) */
+  .modal-content {
+    background-color: #fff0f6;
+    margin: 10% auto;
+    padding: 20px 30px;
+    border: 2px solid #e91e63;
+    border-radius: 10px;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    position: relative;
+  }
+
+  /* Жабу крестигі */
+  .close-btn {
+    color: #e91e63;
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  h3 {
+    color: #c2185b;
+    margin-top: 0;
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  button.submit-btn {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #e91e63;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+
+  button.submit-btn:hover {
+    background-color: #c2185b;
+  }
