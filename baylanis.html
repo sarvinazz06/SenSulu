@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SenSulu - Косметика және парфюмерия</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.jpg" type="image/jpg"/>
+</head>
+<body>
+  <header>
+    <div class="main-header">
+      <div class="logo">SenSulu</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">🏠Басты бет</a></li>
+          <li><a href="catalog.html">💄Каталог</a></li>
+          <li><a href="blog.html">📝Блог</a></li>
+          <li><a href="cart.html">🛒Себет</a></li>
+          <li><a href="baylanis.html">📞Байланыс</a></li>
+        </ul>
+      </nav>
+      <div class="icons">
+        <a href="#"><img src="поиск.jpg" alt="Іздеу"></a>
+        <a href="#"><img src="5.jpg" alt="Профиль"></a>
+        <a href="#"><img src="6.jpg" alt="Себет"></a>
+      </div>
+    </div>
+  </header>
+<header>
+  <h1>Байланыс</h1>
+</header>
+
+<div class="contact-section">
+  <h2>Біз туралы</h2>
+  <p>SenSulu – Сіздің сұлулығыңыз үшін арналған косметика және парфюмерия дүкені. Қосымша сұрақтарыңыз болса, бізбен хабарласыңыз!</p>
+  <button class="contact-btn" onclick="openModal()">✉️ Хабарлама жіберу</button>
+
+  <div class="map">
+  <h3>📍 Орналасқан жеріміз</h3>
+  <iframe 
+    src="https://www.google.com/maps/embed?..." 
+    width="100%" 
+    height="400" 
+    style="border:0;" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+
+<!-- Modal форма -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Хабарлама жіберу</h2>
+    <input type="text" id="userName" placeholder="Аты-жөніңіз" required>
+    <input type="email" id="userEmail" placeholder="Email" required>
+    <textarea id="userMsg" rows="4" placeholder="Хабарламаңызды жазыңыз..." required></textarea>
+    <button onclick="sendMessage()">📨 Жіберу</button>
+    <p class="success-msg" id="successMsg">✅ Хабарлама сәтті жіберілді!</p>
+  </div>
+</div>
+
+<button onclick="scrollToTop()" id="scrollTopBtn" title="Жоғары көтерілу">↑</button>
+
+
+<script>
+  function openModal() {
+    document.getElementById('contactModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('contactModal').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'none';
+  }
+
+  function sendMessage() {
+    const name = document.getElementById('userName').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+    const msg = document.getElementById('userMsg').value.trim();
+
+    if (name && email && msg) {
+      // Хабарлама сәтті жіберілді
+      document.getElementById('successMsg').style.display = 'block';
+      setTimeout(() => {
+        closeModal();
+      }, 2000);
+    }
+  }
+ 
+  // Көріну логикасы
+  window.onscroll = function () {
+    document.getElementById("scrollTopBtn").style.display =
+      window.pageYOffset > 300 ? "block" : "none";
+  };
+
+  // Жоғары көтерілу функциясы
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+
+</script>
+ <footer>
+        <div class="footer-container">
+            <div class="footer-logo">SenSulu</div>
+            <div class="footer-links">
+                <a href="index.html">🏠Басты бет</a>
+                <a href="catalog.html">💄Каталог</a>
+                <a href="blog.html">📝Блог</a>
+                <a href="cart.html">🛒Себет</a>
+                <a href="baylanis.html">📞Байланыс</a>
+            </div>
+            <div class="footer-contact">
+                <p>Байланыс: +7 777 123 4567</p>
+                <p>Email: sensulu@example.com</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/"><img src="7.jpg" alt="Instagram"></a>
+                    <a href="https://www.whatsapp.com/"><img src="8.jpg" alt="WhatsApp"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <footer>
+    © 2025 SenSulu — Әсемдік пен табиғилықтың үйлесімі.
+  </footer>
+</body>
+</html>
