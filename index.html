@@ -1,3 +1,8 @@
+<?php
+// Егер сессия немесе дерекқор қосу керек болса, мұнда жазылады
+// session_start();
+// require 'db.php';
+?>
 <!DOCTYPE html>
 <html lang="kk">
 <head>
@@ -14,11 +19,11 @@
       <div class="logo">SenSulu</div>
       <nav>
         <ul>
-          <li><a href="index.html">🏠Басты бет</a></li>
-          <li><a href="catalog.html">💄Каталог</a></li>
-          <li><a href="blog.html">📝Блог</a></li>
-          <li><a href="cart.html">🛒Себет</a></li>
-          <li><a href="baylanis.html">📞Байланыс</a></li>
+          <li><a href="index.php">🏠Басты бет</a></li>
+          <li><a href="catalog.php">💄Каталог</a></li>
+          <li><a href="blog.php">📝Блог</a></li>
+          <li><a href="cart.php">🛒Себет</a></li>
+          <li><a href="baylanis.php">📞Байланыс</a></li>
         </ul>
       </nav>
       <div class="icons">
@@ -61,37 +66,35 @@
   <section class="products">
     <h2>Таңдаулы өнімдер</h2>
     <div class="product-grid">
-      <div class="product-card" data-img="1.jpg" data-info="Қызғылт ерін далабы — нәзік әрі ұзақ сақталатын.">
-        <img src="1.jpg" alt="Ерін далабы">
-        <p>Қызғылт ерін далабы</p>
-        <span class="price">₸4,500 <del>₸6,000</del></span>
-      </div>
-      <div class="product-card" data-img="2.jpg" data-info="Жарқырау сарысуы — теріні нәрлендіреді және жылтыратады.">
-        <img src="2.jpg" alt="Сарысу">
-        <p>Жарқырау сарысуы</p>
-        <span class="price">₸7,000</span>
-      </div>
-      <div class="product-card" data-img="3.jpg" data-info="SPF крем — күннен қорғау және ылғалдандыру.">
-        <img src="3.jpg" alt="Крем">
-        <p>Күнге қарсы SPF крем</p>
-        <span class="price">₸5,500 <del>₸7,500</del></span>
-      </div>
-      <div class="product-card" data-img="4.jpg" data-info="Sen Aura — жаңа хош иіс, балғын әрі нәзік.">
-        <img src="4.jpg" alt="Парфюм">
-        <p>Жаңа хош иіс Sen Aura</p>
-        <span class="price">₸15,000</span>
-      </div>
+      
+      <?php
+      $products = [
+        ["img" => "1.jpg", "name" => "Қызғылт ерін далабы", "price" => "₸4,500", "old" => "₸6,000", "info" => "Қызғылт ерін далабы — нәзік әрі ұзақ сақталатын."],
+        ["img" => "2.jpg", "name" => "Жарқырау сарысуы", "price" => "₸7,000", "old" => "", "info" => "Жарқырау сарысуы — теріні нәрлендіреді және жылтыратады."],
+        ["img" => "3.jpg", "name" => "Күнге қарсы SPF крем", "price" => "₸5,500", "old" => "₸7,500", "info" => "SPF крем — күннен қорғау және ылғалдандыру."],
+        ["img" => "4.jpg", "name" => "Жаңа хош иіс Sen Aura", "price" => "₸15,000", "old" => "", "info" => "Sen Aura — жаңа хош иіс, балғын әрі нәзік."]
+      ];
+      foreach ($products as $product) {
+        echo '<div class="product-card" data-img="'.$product['img'].'" data-info="'.$product['info'].'">';
+        echo '<img src="'.$product['img'].'" alt="'.$product['name'].'">';
+        echo '<p>'.$product['name'].'</p>';
+        echo '<span class="price">'.$product['price'];
+        if ($product['old']) echo ' <del>'.$product['old'].'</del>';
+        echo '</span>';
+        echo '</div>';
+      }
+      ?>
     </div>
   </section>
-<!-- Модал терезе -->
-<div id="modalka" class="modalka">
-  <div class="modalka-content">
-    <span id="modalCloseBtn" class="close-btn">&times;</span>
-    <img id="modal-img" src="" alt="Өнім суреті">
-    <p id="modal-text"></p>
-  </div>
-</div>
 
+  <!-- Модал терезе -->
+  <div id="modalka" class="modalka">
+    <div class="modalka-content">
+      <span id="modalCloseBtn" class="close-btn">&times;</span>
+      <img id="modal-img" src="" alt="Өнім суреті">
+      <p id="modal-text"></p>
+    </div>
+  </div>
 
   <button id="scrollToTopBtn" title="Жоғары көтерілу">↑</button>
 
@@ -99,11 +102,11 @@
     <div class="footer-container">
       <div class="footer-logo">SenSulu</div>
       <div class="footer-links">
-        <a href="index.html">🏠Басты бет</a>
-        <a href="catalog.html">💄Каталог</a>
-        <a href="blog.html">📝Блог</a>
-        <a href="cart.html">🛒Себет</a>
-        <a href="baylanis.html">📞Байланыс</a>
+        <a href="index.php">🏠Басты бет</a>
+        <a href="catalog.php">💄Каталог</a>
+        <a href="blog.php">📝Блог</a>
+        <a href="cart.php">🛒Себет</a>
+        <a href="baylanis.php">📞Байланыс</a>
       </div>
       <div class="footer-contact">
         <p>Байланыс: +7 777 123 4567</p>
@@ -151,7 +154,6 @@
         modal.style.display = 'none';
       }
     });
-
   </script>
 </body>
 </html>
